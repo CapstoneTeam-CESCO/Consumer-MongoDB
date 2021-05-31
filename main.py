@@ -35,13 +35,13 @@ for message in consumer:
     # Parsing
     message = message.value
     trapId = message["SPU"]["MPU"]["trapId"]
-    cmd = message["SPU"]["MPU"]["cmd"]
-    if cmd == '2':
-        BR.send_message_to_backend(trapId, cmd)
-        slackText = "TrapId: " + trapId + "Warning!." + "Command is" + cmd + "."
-        SM.send_message_to_slack(slackText, "ghost")
+    item = message["SPU"]["MPU"]["item"]
+    if item == '6' or item == '4':
+        BR.send_message_to_backend(trapId, item)
+        slackText = "TrapId: " + trapId
+        SM.send_message_to_slack(slackText, item)
 
-    print("Trapid: %s, cmd : %s" % (trapId, cmd))
+    print("Trapid: %s, item : %s" % (trapId, item))
     isRead = {
         'is_read': False
     }
