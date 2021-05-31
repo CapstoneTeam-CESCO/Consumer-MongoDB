@@ -8,8 +8,8 @@ load_dotenv(find_dotenv())
 
 def send_message_to_slack(text,item):
     now = time.localtime()
-    if item == 4:
-        title = "Warning Alert"
+    if item == '4':
+        title = "Replacement Alert"
         color = "#ffd400"
         text = "Something got caught in the trap" + "\n" + "TrapId: " + text
     else:
@@ -25,14 +25,6 @@ def send_message_to_slack(text,item):
                 "text" : text,
                 "color": color,
                 "attachment_type": "default",
-                 "actions": [
-                    {
-                        "name": "check",
-                        "text": "PestPlan.com",
-                        "type": "button",
-                        "url": "https://naver.com"
-                    }
-                ],
                 "thumb_url": "https://i.postimg.cc/23pSYzN7/Kakao-Talk-Photo-2021-04-06-16-18-17.png",
                 "footer": "Pest Plan" + " | " + "%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec),
                 # "footer_icon": logo
